@@ -1,0 +1,319 @@
+{% extends 'partials/base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% load crispy_forms_tags %}
+
+<form method="post" class="my-class">
+    {{ my_formset|crispy }}
+</form>
+
+{% block content %}
+<div class = "row mt-3 pt-3">
+	<div class = "col-md-4">
+		<div class = "border p-3 shadow">
+			<h4> Benching </h4>
+			<hr>
+			<form  method="POST">
+				{% csrf_token %}
+				{{ form|crispy }}
+				<input class = "btn btn-success btn-block" type="submit" name="submit_model1">
+				
+			</form>
+				
+		
+	</div>
+		<div class = "border p-3 shadow">
+			<h4> Deadlifting</h4>
+			<hr>
+			<form  method="POST">
+				{% csrf_token %}
+				{{ form2|crispy }}
+				<input class = "btn btn-success btn-block" type="submit" name="submit_model2">
+				
+			</form>
+				
+		
+	</div>
+
+ 
+    <div class = "border p-3 shadow">
+      <h4> Sideshoulder</h4>
+      <hr>
+      <form  method="POST">
+        {% csrf_token %}
+        {{ form3|crispy }}
+        <input class = "btn btn-success btn-block" type="submit" name="submit_model3">
+        
+      </form>
+        
+    
+  </div>
+
+    <div class = "border p-3 shadow">
+      <h4> frontshoulder</h4>
+      <hr>
+      <form  method="POST">
+        {% csrf_token %}
+        {{ form4|crispy }}
+        <input class = "btn btn-success btn-block" type="submit" name="submit_model4">
+        
+      </form>
+        
+    
+  </div>  
+
+    <div class = "border p-3 shadow">
+      <h4> squatting</h4>
+      <hr>
+      <form  method="POST">
+        {% csrf_token %}
+        {{ form5|crispy }}
+        <input class = "btn btn-success btn-block" type="submit" name="submit_model5">
+        
+      </form>
+        
+    
+  </div>  
+
+  <div class = "border p-3 shadow">
+      <h4> backpull</h4>
+      <hr>
+      <form  method="POST">
+        {% csrf_token %}
+        {{ form6|crispy }}
+        <input class = "btn btn-success btn-block" type="submit" name="submit_model6">
+        
+      </form>
+        
+    
+  </div> 
+
+   <div class = "border p-3 shadow">
+      <h4> pullups</h4>
+      <hr>
+      <form  method="POST">
+        {% csrf_token %}
+        {{ form7|crispy }}
+        <input class = "btn btn-success btn-block" type="submit" name="submit_model7">
+        
+      </form>
+        
+    
+  </div> 
+
+
+</div>
+
+<div class="col-md-8">
+  <canvas id="myChart" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data %} '{{ data.date }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data %} '{{ data.weight }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+
+<div class="col-md-8">
+  <canvas id="myChar2t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx2 = document.getElementById('myChar2t');
+
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data2 %} '{{ data.date2 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data2 %} '{{ data.weight2 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+<div class="col-md-8">
+  <canvas id="myChar3t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx3 = document.getElementById('myChar3t');
+
+  new Chart(ctx3, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data3 %} '{{ data.date3 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data3 %} '{{ data.weight3 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+<div class="col-md-8">
+  <canvas id="myChar4t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx4 = document.getElementById('myChar4t');
+
+  new Chart(ctx4, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data4 %} '{{ data.date4 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data4 %} '{{ data.weight4 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+<div class="col-md-8">
+  <canvas id="myChar5t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx5 = document.getElementById('myChar5t');
+
+  new Chart(ctx5, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data5 %} '{{ data.date5 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data5 %} '{{ data.weight5 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+<div class="col-md-8">
+  <canvas id="myChar6t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx6 = document.getElementById('myChar6t');
+
+  new Chart(ctx6, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data6 %} '{{ data.date6 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data6 %} '{{ data.weight6 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+
+<div class="col-md-8">
+  <canvas id="myChar7t" height="100"></canvas>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx7 = document.getElementById('myChar7t');
+
+  new Chart(ctx7, {
+    type: 'line',
+    data: {
+      labels: [{% for data in data7 %} '{{ data.date7 }}', {% endfor %}],
+      datasets: [{
+        label: 'Weight',
+        data: [{% for data in data7 %} '{{ data.weight7 }}', {% endfor %}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+</div>
+
+</div>
+{% endblock %}
