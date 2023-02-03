@@ -1,1 +1,1 @@
-web guinocorn datavisual.wsgi:application --log-file -
+web gunicorn datavisual.wsgi:application --log-file -
